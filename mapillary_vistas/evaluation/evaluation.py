@@ -55,6 +55,8 @@ Specify the 16bit instance files."""
             prediction_image = Image.open(prediction_path)
             prediction_array = np.array(prediction_image)
             assert prediction_array.dtype == np.uint8
+            # Our index starts from 1 (Bird) while official code starts from 0 (Bird) and use index 65 as unlabeled.
+            prediction_array = prediction_array - 1
 
             confusion_matrix = calculate_confusion_matrix_from_arrays(
                 prediction_array,
