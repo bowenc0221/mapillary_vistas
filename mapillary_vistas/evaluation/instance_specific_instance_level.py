@@ -77,6 +77,9 @@ def calculate_instance_specific_instance_accuracy_from_arrays(instance_predictio
                     label_id = int(label)
                 except ValueError:
                     label_id = label_indices[label]
+                    
+                # Our index starts from 1 (Bird) while official code starts from 0 (Bird).
+                label_id -= 1
 
                 if label_id not in instance_prediction_infos:
                     instance_prediction_infos[label_id] = []
